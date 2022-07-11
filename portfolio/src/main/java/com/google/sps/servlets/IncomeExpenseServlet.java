@@ -1,13 +1,16 @@
 package com.google.sps.servlets;
 
 import com.google.gson.Gson;
+import com.opencsv.CSVReader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -35,22 +38,18 @@ public class IncomeExpenseServlet extends HttpServlet {
   }
 
   @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    try {
-      Part filePart = request.getPart("file");
-      InputStream fileContent = filePart.getInputStream();
-
-      try (BufferedReader reader = new BufferedReader(new InputStreamReader(fileContent))) {
-        while (reader.ready()) {
-          String line = reader.readLine();
-          System.out.println(line);
-        }
-      }
-
-    } catch (ServletException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+  public void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws IOException, ServletException {
+    // Get contents of uploaded file
+    Part filePart = request.getPart("file");
+    InputStream fileContent = filePart.getInputStream();
+    // Test using CSVReader
+    CSVReader reader = new CSVReader(new InputStreamReader(fileContent));
+    String nextLine[];
+    while ((nextLine = reader.readNext()) != null) {
+      System.out.println(nextLine[0] + " " + nextLine[1] + " " + nextLine[2]);
     }
+
     /*
     String color = request.getParameter("color");
     int currentVotes = colorVotes.containsKey(color) ? colorVotes.get(color) : 0;
