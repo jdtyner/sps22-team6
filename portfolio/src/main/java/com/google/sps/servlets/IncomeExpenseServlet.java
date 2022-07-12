@@ -1,6 +1,7 @@
 package com.google.sps.servlets;
 
 import com.google.gson.Gson;
+import com.google.sps.data.MonthData;
 import com.google.sps.data.Transaction;
 import com.opencsv.CSVReader;
 
@@ -10,6 +11,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ListIterator;
@@ -29,7 +31,7 @@ import javax.servlet.http.Part;
 @MultipartConfig
 public class IncomeExpenseServlet extends HttpServlet {
 
-  //private Map<String, Integer> colorVotes = new HashMap<>();
+  private Map<YearMonth, MonthData> IncomeExpenseGraph = new HashMap<>();
   
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -58,10 +60,23 @@ public class IncomeExpenseServlet extends HttpServlet {
       transactions.add(new Transaction(
           LocalDate.parse(nextLine[0]), nextLine[1], Float.parseFloat(nextLine[2])));
     }
-    // Testing: print elements of array
+    // For each transaction in array, get YearMonth and add to IncomeExpenseGraph map
     ListIterator<Transaction> itr = transactions.listIterator();
     while (itr.hasNext()) {
-      System.out.println(itr.next());
+      Transaction transaction = itr.next();
+      YearMonth month = YearMonth.from(transaction.getDate());
+      // Add new YearMonth key if not already in map
+      IncomeExpenseGraph.putIfAbsent(month, new MonthData());
+      // Add to income if transaction has positive amount, expense if negative amount
+      if (transaction.getAmount() > 0) {
+        IncomeExpenseGraph.get(month).addIncome(transaction.getAmount());
+      } else {
+        IncomeExpenseGraph.get(month).addExpense(-1 * transaction.getAmount());
+      }
+    }
+
+    for (YearMonth month : IncomeExpenseGraph.keySet()) {
+      System.out.println(month + ": " + IncomeExpenseGraph.get(month));
     }
 
     /*

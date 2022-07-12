@@ -1,7 +1,8 @@
 package com.google.sps.data;
-
 import java.time.LocalDate;
-
+/**
+ * Transaction object corresponds to line in transaction CSV file
+ */
 public class Transaction {
   private LocalDate date;
   private String description;
@@ -16,5 +17,17 @@ public class Transaction {
   @Override
   public String toString() {
     return date.toString() + " " + description + " " + Float.toString(amount);
+  }
+
+  public LocalDate getDate() {
+    return date;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public float getAmount() {
+    return amount;
   }
 }
