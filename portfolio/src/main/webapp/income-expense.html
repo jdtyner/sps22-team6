@@ -9,8 +9,8 @@
   <body>
     <div id="content">
       <h1>Income vs. Expense Calculator</h1>
-      <form action="income-expense.html">
-        <input type="file" accept=".csv, text/csv" name="transaction-file"/>
+      <form action="/process-income-expense" method="POST" enctype="multipart/form-data">
+        <input type="file" accept=".csv, text/csv" name="file"/>
         <input type="submit"/>
       </form>
     </div>
