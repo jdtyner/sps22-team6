@@ -12,6 +12,35 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawIncomeExpenseChart);
+
+/** Fetches color data and uses it to create a chart. */
+function drawIncomeExpenseChart() {
+  fetch('/process-income-expense').then(response => response.json())
+  .then(data => console.log(data));
+  /*
+  .then((colorVotes) => {
+    const data = new google.visualization.DataTable();
+    data.addColumn('string', 'Color');
+    data.addColumn('number', 'Votes');
+    Object.keys(colorVotes).forEach((color) => {
+      data.addRow([color, colorVotes[color]]);
+    });
+
+    const options = {
+      'title': 'Favorite Colors',
+      'width':600,
+      'height':500
+    };
+
+    const chart = new google.visualization.ColumnChart(
+        document.getElementById('chart-container'));
+    chart.draw(data, options);
+  });
+  */
+}
+
 /**
  * Adds a random greeting to the page.
  */
