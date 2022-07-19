@@ -15,30 +15,38 @@
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawIncomeExpenseChart);
 
-/** Fetches color data and uses it to create a chart. */
+/** Fetches monthly income/expense data and uses it to create a chart. */
 function drawIncomeExpenseChart() {
   fetch('/process-income-expense').then(response => response.json())
-  .then(data => console.log(data));
-  /*
-  .then((colorVotes) => {
+  .then((incomeExpenseData) => {
+    console.log(incomeExpenseData);
     const data = new google.visualization.DataTable();
-    data.addColumn('string', 'Color');
-    data.addColumn('number', 'Votes');
-    Object.keys(colorVotes).forEach((color) => {
-      data.addRow([color, colorVotes[color]]);
+
+    // Display income, expense, and cash flow for each month
+    data.addColumn('string', 'Month');
+    data.addColumn('number', 'Income');
+    data.addColumn('number', 'Expense');
+    data.addColumn('number', 'Cash Flow');
+
+    // For each month in income/expense data object
+    Object.keys(incomeExpenseData).forEach((month) => {
+      // Add row with income, expense, and cashflow
+      const income = incomeExpenseData[month].income;
+      const expense = incomeExpenseData[month].expense;
+      const cashFlow = income - expense;
+      data.addRow([month, income, expense, cashFlow]);
     });
 
     const options = {
-      'title': 'Favorite Colors',
+      'title': 'Income vs. Expense by Month',
       'width':600,
       'height':500
     };
 
     const chart = new google.visualization.ColumnChart(
-        document.getElementById('chart-container'));
+        document.getElementById('income-expense-chart'));
     chart.draw(data, options);
   });
-  */
 }
 
 /**
