@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Fund</title>
+</head>
+<body>
+    <form action="/calculate-emergency-fund" method="POST">
+        <!--Choose how many months the emergency fund calculator is saving up for, 3 or 6-->
+        <label for="months"> Choose how many months you would like to save for:</label>
+        <select name="months" id="months">
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
+        <br>
+
+        <!--Enter Rent/Mortgage Payment-->
+        <label for="home">Enter Monthly Rent/Mortage Payment:</label>
+        <textarea name="home"></textarea>
+        <br>
+
+        <!--Enter Utility Payment-->
+        <label for="utility">Enter Monthly Utility Payments</label>
+        <textarea name="utility"></textarea>
+        <br>
+
+        <!--Enter Transportation Payment-->
+        <label for="transportation">Enter Average Monthly Transportation Expenses (Rideshare, gas, etc.)</label>
+        <textarea name="transportation"></textarea>
+        <br>
+
+        <!--Enter Food Payment-->
+        <label for="food">Enter Average Food Expenses (groceries, takeout, etc.)</label>
+        <textarea name="food"></textarea>
+        <br>
+
+        <!--Enter Debt Payment (optional)-->
+        <label for="debt">Enter Any Monthly Debt Payments</label>
+        <textarea name="debt"></textarea>
+        <br>
+
+        <!--Enter Medical Expenses (bills/insurance)-->
+        <label for="medical">Enter Average Monthly Medical Expenses</label>
+        <textarea name="medical"></textarea>
+        <br>
+        <!--Enter Other Miscellaneous Expenses that don't fit into above categories (personal/child care, leisure, taxes, subscriptions)-->
+        <label for="other">Enter Any Other Miscellaneous Expenses</label>
+        <textarea name="other"></textarea>
+        <br>
+
+        <input type="submit"/>
+    </form>
+
+
+</body>
+</html>
