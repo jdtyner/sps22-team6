@@ -19,11 +19,10 @@ google.charts.setOnLoadCallback(drawIncomeExpenseChart);
 function drawIncomeExpenseChart() {
   fetch('/process-income-expense').then(response => response.json())
   .then((incomeExpenseData) => {
-    console.log(incomeExpenseData);
     const data = new google.visualization.DataTable();
 
     // Display income, expense, and cash flow for each month
-    data.addColumn('string', 'Month');
+    data.addColumn('date', 'Month');
     data.addColumn('number', 'Income');
     data.addColumn('number', 'Expense');
     data.addColumn('number', 'Cash Flow');
@@ -34,13 +33,19 @@ function drawIncomeExpenseChart() {
       const income = incomeExpenseData[month].income;
       const expense = incomeExpenseData[month].expense;
       const cashFlow = income - expense;
-      data.addRow([month, income, expense, cashFlow]);
+      data.addRow([new Date(month), income, expense, cashFlow]);
     });
 
     const options = {
       'title': 'Income vs. Expense by Month',
-      'width':600,
-      'height':500
+      'width':800,
+      'height':500,
+      'hAxis':{
+        'format': 'MMM y',
+        'gridlines': {'color': 'none'}
+      },
+      'vAxis': {'format': 'currency'},
+      'titleTextStyle': {'fontSize': 16}
     };
 
     const chart = new google.visualization.ColumnChart(
