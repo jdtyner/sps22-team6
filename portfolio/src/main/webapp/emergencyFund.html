@@ -3,12 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <title>Emergency Fund</title>
 </head>
 <body>
+    <!--Navbar code-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgba(96, 197, 96, 0.7);">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">BetterBudget</a> <!--Back to home page-->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="income-expense.html">Income Expenses</a> <!--To income expenses calcualtor-->
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="emergencyFund.html">Emergency Fund</a> <!--To Emergency Fund Calculator-->
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"> Rent vs. Buy</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <h1>Emergency Fund Calculator</h1>
+    
+    <p>Translate page to:</p>
+    <select id="language">
+        <option value="es">English</option>
+        <option value="zh">Chinese</option>
+        <option value="es">Spanish</option>
+        <option value="hi">Hindi</option>
+        <option value="ar">Arabic</option>
+    </select>
+    <input type="submit" onclick="translatePage()">
+
     <form action="/calculate-emergency-fund" method="POST">
         <!--Choose how many months the emergency fund calculator is saving up for, 3 or 6-->
-        <label for="months"> Choose how many months you would like to save for:</label>
+        <label id="monthsTranslate" for="months"> Choose how many months you would like to save for:</label>
         <select name="months" id="months">
             <option value="3">3</option>
             <option value="4">4</option>
@@ -18,37 +62,37 @@
         <br>
 
         <!--Enter Rent/Mortgage Payment-->
-        <label for="home">Enter Monthly Rent/Mortage Payment:</label>
-        <textarea name="home"></textarea>
+        <label name="homeTranslate" for="home">Enter Monthly Rent/Mortgage Payment:</label>
+        <input type="text" name="home">
         <br>
 
         <!--Enter Utility Payment-->
-        <label for="utility">Enter Monthly Utility Payments</label>
-        <textarea name="utility"></textarea>
+        <label name="utilityTranslate" for="utility">Enter Monthly Utility Payments</label>
+        <input type="text" name="utility">
         <br>
 
         <!--Enter Transportation Payment-->
-        <label for="transportation">Enter Average Monthly Transportation Expenses (Rideshare, gas, etc.)</label>
-        <textarea name="transportation"></textarea>
+        <label name="transportTranslate" for="transportation">Enter Average Monthly Transportation Expenses (Rideshare, gas, etc.)</label>
+        <input type="text" name="transportation">
         <br>
 
         <!--Enter Food Payment-->
-        <label for="food">Enter Average Food Expenses (groceries, takeout, etc.)</label>
-        <textarea name="food"></textarea>
+        <label name="foddTranslate" for="food">Enter Average Food Expenses (groceries, takeout, etc.)</label>
+        <input type="text" name="food">
         <br>
 
         <!--Enter Debt Payment (optional)-->
-        <label for="debt">Enter Any Monthly Debt Payments</label>
-        <textarea name="debt"></textarea>
+        <label name="debtTranslate" for="debt">Enter Any Monthly Debt Payments</label>
+        <input type="text" name="debt">
         <br>
 
         <!--Enter Medical Expenses (bills/insurance)-->
         <label for="medical">Enter Average Monthly Medical Expenses</label>
-        <textarea name="medical"></textarea>
+        <input type="text" name="medical">
         <br>
         <!--Enter Other Miscellaneous Expenses that don't fit into above categories (personal/child care, leisure, taxes, subscriptions)-->
-        <label for="other">Enter Any Other Miscellaneous Expenses</label>
-        <textarea name="other"></textarea>
+        <label name="otherTranslate" for="other">Enter Any Other Miscellaneous Expenses</label>
+        <input type="text" name="other">
         <br>
 
         <input type="submit"/>
