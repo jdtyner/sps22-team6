@@ -1,5 +1,10 @@
 package com.google.sps.servlets;
 
+
+import com.google.cloud.translate.Translate;
+import com.google.cloud.translate.TranslateOptions;
+import com.google.cloud.translate.Translation;
+import java.io.IOException;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,3 +44,5 @@ public class emergencyFundServlet extends HttpServlet {
     response.getWriter().println("You need to save: $" + save + " in order to have an emergency fund for " + conMonths + " months. Good luck!");
   }
 }
+    
+
