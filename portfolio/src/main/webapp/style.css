@@ -1,5 +1,5 @@
 body {
-    background-color: rgba(96, 197, 96, 0.4);
+    background-color: rgba(96, 197, 96, 0.4) !important;
 }
 
 #content {
