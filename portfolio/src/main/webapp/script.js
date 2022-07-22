@@ -73,16 +73,22 @@ function addRandomGreeting() {
 
 //use this function to translate contents of the page
 function translatePage() {
-    const language = document.getElementById("langauge"); //read what language user wants to translate page to
-    const months = document.getElementById("monthsTranslate");
-    console.log(months);
+    const language = document.getElementById('language').val; //read what language user wants to translate page to
+    const months = document.getElementById('monthsTranslate').innerText;
+
+    const monthsContainer = document.getElementById('monthsTranslate');
+
+
     const params = new URLSearchParams();
     params.append('language', language);
     params.append('months', months);
 
     fetch('/translate', {
-        method: 'POST',
-        body: params
-      }).then(response => response.text())
+          method: 'POST',
+          body: params
+        }).then(response => response.text())
+        .then((translatedMessage) => {
+            monthsContainer.innerText = translatedMessage;
+        });
 
 }
