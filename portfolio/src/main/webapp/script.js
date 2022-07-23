@@ -117,7 +117,6 @@ function translatePage() {
             debtContainer.innerText = translatedMessage;
             medicalContainer.innerText = translatedMessage;
             otherContainer.innerText = translatedMessage;
-
         });
 
 }
