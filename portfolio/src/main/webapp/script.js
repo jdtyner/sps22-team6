@@ -73,15 +73,36 @@ function addRandomGreeting() {
 
 //use this function to translate contents of the page
 function translatePage() {
-    const language = document.getElementById('language').val; //read what language user wants to translate page to
+    const language = document.getElementById('language').value; //read what language user wants to translate page to
     const months = document.getElementById('monthsTranslate').innerText;
+    const home = document.getElementById('homeTranslate').innerText;
+    const utility = document.getElementById('utilityTranslate').innerText;
+    const transport = document.getElementById('transportTranslate').innerText;
+    const food = document.getElementById('foodTranslate').innerText;
+    const debt = document.getElementById('debtTranslate').innerText;
+    const medical = document.getElementById('medicalTranslate').innerText;
+    const other = document.getElementById('otherTranslate').innerText;
 
     const monthsContainer = document.getElementById('monthsTranslate');
-
+    const homeContainer = document.getElementById('homeTranslate');
+    const utilityContainer = document.getElementById('utilityTranslate');
+    const transportContainer = document.getElementById('transportTranslate');
+    const foodContainer = document.getElementById('foodTranslate');
+    const debtContainer = document.getElementById('debtTranslate');
+    const medicalContainer = document.getElementById('medicalTranslate');
+    const otherContainer = document.getElementById('otherTranslate');
 
     const params = new URLSearchParams();
     params.append('language', language);
     params.append('months', months);
+    params.append('home', home);
+    params.append('utility', utility);
+    params.append('transport', transport);
+    params.append('food', food);
+    params.append('debt', debt);
+    params.append('medical', medical);
+    params.append('other', other);
+
 
     fetch('/translate', {
           method: 'POST',
@@ -89,6 +110,14 @@ function translatePage() {
         }).then(response => response.text())
         .then((translatedMessage) => {
             monthsContainer.innerText = translatedMessage;
+            homeContainer.innerText = translatedMessage;
+            utilityContainer.innerText = translatedMessage;
+            transportContainer.innerText = translatedMessage;
+            foodContainer.innerText = translatedMessage;
+            debtContainer.innerText = translatedMessage;
+            medicalContainer.innerText = translatedMessage;
+            otherContainer.innerText = translatedMessage;
+
         });
 
 }
