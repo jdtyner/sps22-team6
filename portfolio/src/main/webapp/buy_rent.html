@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Buy vs Rent Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="buy_rent_logic.js"></script>
+  </head>
+  <body>
+    <div id="content">
+      <h1>Rent vs Buy Calculator</h1>
+      <p>This calculator will help you determine whether buying or renting a house is a better decision given how long a person plans to reside in the same place.</p>
+      <label for="home_cost">Enter Cost of Desired Home:</label>
+      <input type="number" id="home_cost" name="home_cost" min = "1">
+      <br/>
+      <br/>
+      <label for="rent_cost">Enter Cost of Rent (Monthly):</label>
+      <input type="number" id="rent_cost" name="rent_cost" min = "1">
+      <br/>
+      <br/>
+      <label for="time">How many years do you plan to stay at the property:</label>
+      <input type="number" id="time" name="time" min = "1">
+      <br/>
+      <br/>
+      <button id="calcButton" onclick="calcBuyRent()">Calculate</button>
+      <br/>
+      <h3 id="calcResult"></h3>
+      <h4 id="calcAdvice"></h4>
+    </div>
+  </body>
+</html>
