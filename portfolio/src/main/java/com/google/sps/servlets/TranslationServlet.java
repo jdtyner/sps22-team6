@@ -81,6 +81,7 @@ public class TranslationServlet extends HttpServlet {
       response.getWriter().println(translatedDebt);
       response.getWriter().println(translatedMed);
       response.getWriter().println(translatedOther);
+    
   }
 }
 
