@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Income vs. Expense</title>
+    <link rel="icon" href="/images/piggy-bank.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://www.gstatic.com/charts/loader.js"></script>
@@ -12,17 +13,18 @@
   </head>
   <body>
     <!--Navbar code-->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(126,208,126)">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">BetterBudget</a> <!--Back to home page-->
+        <a class="navbar-brand" href="index.html">
+          <img src="/images/piggy-bank.png" alt="" width="30" height="30" class="d-inline-block align-text-bottom">
+          BetterBudget
+        </a> 
+        <!--Back to home page-->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="income-expense.html">Income vs. Expense</a> <!--To income expenses calcualtor-->
             </li>
@@ -30,7 +32,7 @@
               <a class="nav-link" href="emergencyFund.html">Emergency Fund</a> <!--To Emergency Fund Calculator-->
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"> Rent vs. Buy</a>
+              <a class="nav-link" href="buy_rent.html"> Rent vs. Buy</a>
             </li>
           </ul>
         </div>
@@ -47,10 +49,14 @@
           <strong>Cash Flow</strong> is income minus expenses. This is how much money you're actually making each month. Watch out for negative cash flow! This means you're spending more money than you have.
         </p>
         <h4>Upload a CSV with transactions to see how much you make each month</h4>
-        <p>Use the following format: Date, Description, Amount</p>
+        <p>Use the following format: Date, Description, Amount
+          <br>
+          Example: 2021-12-31, New Year's Present, 200.00
+        </p>
         <input type="file" accept=".csv, text/csv" name="file" id="csvFile"/>
-        <button type="submit">Generate Chart!</button>
+        <button type="submit" class="btn btn-primary btn-lg">Generate Chart!</button>
       </form>
+      <br>
       <div id="income-expense-chart"></div>
     </div>
   </body>
