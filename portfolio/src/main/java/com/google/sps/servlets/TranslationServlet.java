@@ -17,16 +17,25 @@ public class TranslationServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
       String language = request.getParameter("language");
+      
+      /*
       String months = request.getParameter("months");
       String home = request.getParameter("home");
       String utility = request.getParameter("utility");
-      String transportation = request.getParameter("transportation");
+      String transportation = request.getParameter("transport");
       String food = request.getParameter("food");
       String debt = request.getParameter("debt");
       String medical = request.getParameter("medical");
       String other = request.getParameter("other");
- 
+      */
+      String test = request.getParameter("test");
       
+
+      Translate translate = TranslateOptions.getDefaultInstance().getService();
+      Translation translation = translate.translate(test, Translate.TranslateOption.targetLanguage(language));
+      String translated = translation.getTranslatedText();
+ 
+      /*
       //do translation on each String
       Translate translateMonths = TranslateOptions.getDefaultInstance().getService();
       Translation translationMonths = translateMonths.translate(months, Translate.TranslateOption.targetLanguage(language));
@@ -60,19 +69,12 @@ public class TranslationServlet extends HttpServlet {
       Translation translationOther = translateOther.translate(other, Translate.TranslateOption.targetLanguage(language));
       String translatedOther = translationOther.getTranslatedText();
 
-      System.out.println(translatedMonths);
-      System.out.println(translatedHome);
-      System.out.println(translatedUtility);
-      System.out.println(translatedTransport);
-      System.out.println(translatedFood);
-      System.out.println(translatedDebt);
-      System.out.println(translatedMed);
-      System.out.println(translatedOther);
-
-
       // Output the translation.
-      //response.setContentType("text/html; charset=UTF-8");
-      //response.setCharacterEncoding("UTF-8");
+      */
+      response.setContentType("text/html; charset=UTF-8");
+      response.setCharacterEncoding("UTF-8");
+      response.getWriter().println(translated);
+       /*
       response.getWriter().println(translatedMonths);
       response.getWriter().println(translatedHome);
       response.getWriter().println(translatedUtility);
@@ -81,6 +83,7 @@ public class TranslationServlet extends HttpServlet {
       response.getWriter().println(translatedDebt);
       response.getWriter().println(translatedMed);
       response.getWriter().println(translatedOther);
+      */
     
   }
 }
