@@ -57,6 +57,8 @@ public class IncomeExpenseServlet extends HttpServlet {
       transactions.add(new Transaction(
           LocalDate.parse(nextLine[0]), nextLine[1], Float.parseFloat(nextLine[2])));
     }
+    // When new CSV uploaded, clear old contents of map
+    IncomeExpenseChart.clear();
     // For each transaction in array, get YearMonth and add to IncomeExpenseChart map
     ListIterator<Transaction> itr = transactions.listIterator();
     while (itr.hasNext()) {
