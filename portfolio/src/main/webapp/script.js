@@ -92,6 +92,10 @@ function translatePage() {
     const medicalContainer = document.getElementById('medicalTranslate');
     const otherContainer = document.getElementById('otherTranslate');
 
+    const test = document.getElementById('translate').innerText;
+    const testContainer = document.getElementById('translate');
+    console.log(test);
+
     const params = new URLSearchParams();
     params.append('language', language);
     params.append('months', months);
@@ -102,6 +106,7 @@ function translatePage() {
     params.append('debt', debt);
     params.append('medical', medical);
     params.append('other', other);
+    params.append('test', test);
 
 
     fetch('/translate', {
@@ -109,14 +114,7 @@ function translatePage() {
           body: params
         }).then(response => response.text())
         .then((translatedMessage) => {
-            monthsContainer.innerText = translatedMessage;
-            homeContainer.innerText = translatedMessage;
-            utilityContainer.innerText = translatedMessage;
-            transportContainer.innerText = translatedMessage;
-            foodContainer.innerText = translatedMessage;
-            debtContainer.innerText = translatedMessage;
-            medicalContainer.innerText = translatedMessage;
-            otherContainer.innerText = translatedMessage;
+            testContainer.innerText = translatedMessage;
         });
 
 }

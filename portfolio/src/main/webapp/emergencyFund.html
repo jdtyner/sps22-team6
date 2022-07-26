@@ -51,49 +51,51 @@
     <input type="submit" onclick="translatePage()">
 
     <form action="/calculate-emergency-fund" method="POST">
-        <!--Choose how many months the emergency fund calculator is saving up for, 3 or 6-->
-        <label id="monthsTranslate" for="months"> Choose how many months you would like to save for:</label>
-        <select name="months" id="months">
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-        </select>
-        <br>
+        <div id="translate">
+            <!--Choose how many months the emergency fund calculator is saving up for, 3 or 6-->
+            <label id="monthsTranslate" for="months"> Choose how many months you would like to save for:</label>
+            <select name="months" id="months">
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+            <br>
 
-        <!--Enter Rent/Mortgage Payment-->
-        <label id="homeTranslate" for="home">Enter Monthly Rent/Mortgage Payment:</label>
-        <input type="text" name="home">
-        <br>
+            <!--Enter Rent/Mortgage Payment-->
+            <label id="homeTranslate" for="home">Enter Monthly Rent/Mortgage Payment:</label>
+            <input type="text" name="home">
+            <br>
 
-        <!--Enter Utility Payment-->
-        <label id="utilityTranslate" for="utility">Enter Monthly Utility Payments</label>
-        <input type="text" name="utility">
-        <br>
+            <!--Enter Utility Payment-->
+            <label id="utilityTranslate" for="utility">Enter Monthly Utility Payments</label>
+            <input type="text" name="utility">
+            <br>
 
-        <!--Enter Transportation Payment-->
-        <label id="transportTranslate" for="transportation">Enter Average Monthly Transportation Expenses (Rideshare, gas, etc.)</label>
-        <input type="text" name="transportation">
-        <br>
+            <!--Enter Transportation Payment-->
+            <label id="transportTranslate" for="transportation">Enter Average Monthly Transportation Expenses (Rideshare, gas, etc.)</label>
+            <input type="text" name="transportation">
+            <br>
 
-        <!--Enter Food Payment-->
-        <label id="foodTranslate" for="food">Enter Average Food Expenses (groceries, takeout, etc.)</label>
-        <input type="text" name="food">
-        <br>
+            <!--Enter Food Payment-->
+            <label id="foodTranslate" for="food">Enter Average Food Expenses (groceries, takeout, etc.)</label>
+            <input type="text" name="food">
+            <br>
 
-        <!--Enter Debt Payment (optional)-->
-        <label id="debtTranslate" for="debt">Enter Any Monthly Debt Payments</label>
-        <input type="text" name="debt">
-        <br>
+            <!--Enter Debt Payment (optional)-->
+            <label id="debtTranslate" for="debt">Enter Any Monthly Debt Payments</label>
+            <input type="text" name="debt">
+            <br>
 
-        <!--Enter Medical Expenses (bills/insurance)-->
-        <label id="medicalTranslate">Enter Average Monthly Medical Expenses</label>
-        <input type="text" name="medical">
-        <br>
-        <!--Enter Other Miscellaneous Expenses that don't fit into above categories (personal/child care, leisure, taxes, subscriptions)-->
-        <label id="otherTranslate" for="other">Enter Any Other Miscellaneous Expenses</label>
-        <input type="text" name="other">
-        <br>
+            <!--Enter Medical Expenses (bills/insurance)-->
+            <label id="medicalTranslate">Enter Average Monthly Medical Expenses</label>
+            <input type="text" name="medical">
+            <br>
+            <!--Enter Other Miscellaneous Expenses that don't fit into above categories (personal/child care, leisure, taxes, subscriptions)-->
+            <label id="otherTranslate" for="other">Enter Any Other Miscellaneous Expenses</label>
+            <input type="text" name="other">
+            <br>
+        </div>
 
         <input type="submit"/>
     </form>
