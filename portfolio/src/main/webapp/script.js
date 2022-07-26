@@ -55,3 +55,24 @@ function drawIncomeExpenseChart() {
     }
   });
 }
+
+//use this function to translate contents of the page
+function translatePage() {
+    const language = document.getElementById('language').value; //read what language user wants to translate page to
+
+    const textContainer = document.getElementById('translate');
+
+    const params = new URLSearchParams();
+ 
+    params.append('text', textContainer.innerHTML);
+    params.append('language', language);
+
+    fetch('/translate', {
+          method: 'POST',
+          body: params
+        }).then(response => response.text())
+        .then((translatedMessage) => {
+            textContainer.innerHTML = translatedMessage;
+        });
+
+}
