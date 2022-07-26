@@ -74,47 +74,20 @@ function addRandomGreeting() {
 //use this function to translate contents of the page
 function translatePage() {
     const language = document.getElementById('language').value; //read what language user wants to translate page to
-    const months = document.getElementById('monthsTranslate').innerText;
-    const home = document.getElementById('homeTranslate').innerText;
-    const utility = document.getElementById('utilityTranslate').innerText;
-    const transport = document.getElementById('transportTranslate').innerText;
-    const food = document.getElementById('foodTranslate').innerText;
-    const debt = document.getElementById('debtTranslate').innerText;
-    const medical = document.getElementById('medicalTranslate').innerText;
-    const other = document.getElementById('otherTranslate').innerText;
 
-    const monthsContainer = document.getElementById('monthsTranslate');
-    const homeContainer = document.getElementById('homeTranslate');
-    const utilityContainer = document.getElementById('utilityTranslate');
-    const transportContainer = document.getElementById('transportTranslate');
-    const foodContainer = document.getElementById('foodTranslate');
-    const debtContainer = document.getElementById('debtTranslate');
-    const medicalContainer = document.getElementById('medicalTranslate');
-    const otherContainer = document.getElementById('otherTranslate');
-
-    const test = document.getElementById('translate').innerText;
-    const testContainer = document.getElementById('translate');
-    console.log(test);
+    const textContainer = document.getElementById('translate');
 
     const params = new URLSearchParams();
+ 
+    params.append('text', textContainer.innerHTML);
     params.append('language', language);
-    params.append('months', months);
-    params.append('home', home);
-    params.append('utility', utility);
-    params.append('transport', transport);
-    params.append('food', food);
-    params.append('debt', debt);
-    params.append('medical', medical);
-    params.append('other', other);
-    params.append('test', test);
-
 
     fetch('/translate', {
           method: 'POST',
           body: params
         }).then(response => response.text())
         .then((translatedMessage) => {
-            testContainer.innerText = translatedMessage;
+            textContainer.innerHTML = translatedMessage;
         });
 
 }
