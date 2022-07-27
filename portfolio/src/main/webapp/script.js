@@ -1,17 +1,3 @@
-// Copyright 2020 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     https://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawIncomeExpenseChart);
 
@@ -75,4 +61,34 @@ function translatePage() {
             textContainer.innerHTML = translatedMessage;
         });
 
+}
+
+function calcBuyRent()
+{
+    const home_price = document.getElementById('home_cost').value;
+    const rent_price = document.getElementById('rent_cost').value;
+    const num_years = document.getElementById('time').value;
+
+    var year_rent = rent_price * 12;
+    var total_rent = year_rent;
+    var year = 1;
+
+    while (total_rent < home_price)
+    {
+        total_rent = total_rent + year_rent;
+        year = year + 1;
+    }
+    
+    const result_text = document.getElementById('calcResult');
+    const advice_text = document.getElementById('calcAdvice');
+    result_text.innerText = 'After ' + year + ' years, you would have paid the same amount for rent and a home!';
+    
+    if (num_years >= year)
+    {
+        advice_text.innerText = 'Since you expect to stay at the property for ' + num_years + ', then buying a home might be a good option.';
+    }
+    else
+    {
+        advice_text.innerText = 'Since you expect to stay at the property for less than ' + year + ', then renting might be a good option.';
+    }
 }
