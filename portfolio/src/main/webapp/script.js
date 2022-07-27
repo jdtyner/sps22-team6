@@ -56,12 +56,41 @@ function drawIncomeExpenseChart() {
   });
 }
 
+function calculateEmergencyFund() {
+    const months = document.getElementById('months').value;
+    const home = document.getElementById('home').value;
+    const utility = document.getElementById('utility').value;
+    const transportation = document.getElementById('transportation').value;
+    const food = document.getElementById('food').value;
+    const debt = document.getElementById('debt').value;
+    const medical = document.getElementById('medical').value;
+    const other = document.getElementById('other').value;
+
+    const resultContainer = document.getElementById('result-container');
+
+    const params = new URLSearchParams();
+    params.append('months', months);
+    params.append('home', home);
+    params.append('utility', utility);
+    params.append('transportation', transportation);
+    params.append('food', food);
+    params.append('debt', debt);
+    params.append('medical', medical);
+    params.append('other', other);
+
+    fetch('/calculate-emergency-fund', {
+        method: 'POST',
+        body: params
+        }).then(response => response.text())
+        .then((result) => {
+            resultContainer.innerText = result; 
+        });
+
+}
 //use this function to translate contents of the page
 function translatePage() {
     const language = document.getElementById('language').value; //read what language user wants to translate page to
-
     const textContainer = document.getElementById('translate');
-
     const params = new URLSearchParams();
  
     params.append('text', textContainer.innerHTML);
