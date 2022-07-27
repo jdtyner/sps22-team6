@@ -2,14 +2,57 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Buy vs Rent Calculator</title>
+    <link rel="icon" href="/images/piggy-bank.png">
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="buy_rent_logic.js"></script>
   </head>
   <body>
+    <!--Navbar code-->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(126,208,126)">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img src="/images/piggy-bank.png" alt="" width="30" height="30" class="d-inline-block align-text-bottom">
+          BetterBudget
+        </a> 
+        <!--Back to home page-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="income-expense.html">Income vs. Expense</a> <!--To income expenses calcualtor-->
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="emergencyFund.html">Emergency Fund</a> <!--To Emergency Fund Calculator-->
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="buy_rent.html"> Rent vs. Buy</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
     <div id="content">
       <h1>Rent vs Buy Calculator</h1>
+      <p>Translate page to:</p>
+      <select id="language">
+        <option value="en">English</option>
+        <option value="zh">Chinese</option>
+        <option value="es">Spanish</option>
+        <option value="hi">Hindi</option>
+        <option value="ar">Arabic</option>
+      </select>
+      <input type="submit" onclick="translatePage()">
+      <br>
+      <br>
+      <div id="translate">
       <p>This calculator will help you determine whether buying or renting a house is a better decision given how long a person plans to reside in the same place.</p>
       <label for="home_cost">Enter Cost of Desired Home:</label>
       <input type="number" id="home_cost" name="home_cost" min = "1">
@@ -28,6 +71,7 @@
       <h3 id="calcResult"></h3>
       <h4 id="calcAdvice"></h4>
       <div id="rentBuyChart"></div>
+    </div>
     </div>
   </body>
 </html>

@@ -5,11 +5,9 @@ import com.google.sps.data.MonthData;
 import com.google.sps.data.Transaction;
 import com.opencsv.CSVReader;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.ArrayList;
@@ -31,16 +29,15 @@ import javax.servlet.http.Part;
 @MultipartConfig
 public class IncomeExpenseServlet extends HttpServlet {
 
-  private Map<YearMonth, MonthData> IncomeExpenseGraph = new HashMap<>();
+  private Map<YearMonth, MonthData> IncomeExpenseChart = new HashMap<>();
   
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    /*
+    // Respond to GET request by returning JSON of income/expense data
     response.setContentType("application/json");
     Gson gson = new Gson();
-    String json = gson.toJson(colorVotes);
+    String json = gson.toJson(IncomeExpenseChart);
     response.getWriter().println(json);
-    */
   }
 
   @Override
@@ -60,31 +57,30 @@ public class IncomeExpenseServlet extends HttpServlet {
       transactions.add(new Transaction(
           LocalDate.parse(nextLine[0]), nextLine[1], Float.parseFloat(nextLine[2])));
     }
-    // For each transaction in array, get YearMonth and add to IncomeExpenseGraph map
+    // When new CSV uploaded, clear old contents of map
+    IncomeExpenseChart.clear();
+    // For each transaction in array, get YearMonth and add to IncomeExpenseChart map
     ListIterator<Transaction> itr = transactions.listIterator();
     while (itr.hasNext()) {
       Transaction transaction = itr.next();
       YearMonth month = YearMonth.from(transaction.getDate());
       // Add new YearMonth key if not already in map
-      IncomeExpenseGraph.putIfAbsent(month, new MonthData());
+      IncomeExpenseChart.putIfAbsent(month, new MonthData());
       // Add to income if transaction has positive amount, expense if negative amount
       if (transaction.getAmount() > 0) {
-        IncomeExpenseGraph.get(month).addIncome(transaction.getAmount());
+        IncomeExpenseChart.get(month).addIncome(transaction.getAmount());
       } else {
-        IncomeExpenseGraph.get(month).addExpense(-1 * transaction.getAmount());
+        IncomeExpenseChart.get(month).addExpense(-1 * transaction.getAmount());
       }
     }
-
-    for (YearMonth month : IncomeExpenseGraph.keySet()) {
-      System.out.println(month + ": " + IncomeExpenseGraph.get(month));
-    }
-
+    // Print monthly data to console for testing
     /*
-    String color = request.getParameter("color");
-    int currentVotes = colorVotes.containsKey(color) ? colorVotes.get(color) : 0;
-    colorVotes.put(color, currentVotes + 1);
-
-    response.sendRedirect("income-expense.html");
+    for (YearMonth month : IncomeExpenseChart.keySet()) {
+      System.out.println(month + ": " + IncomeExpenseChart.get(month));
+    }
     */
+    
+    // Redirect to income vs. expense page
+    response.sendRedirect("income-expense.html"); 
   }
 }
