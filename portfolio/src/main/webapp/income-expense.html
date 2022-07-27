@@ -42,21 +42,34 @@
     
     <div id="content">
       <h1>Income vs. Expense Calculator</h1>
-      <form action="/process-income-expense" method="POST" enctype="multipart/form-data">
-        <p>
-          When setting a budget, it's important to know how much money you actually make. 
-          <strong>Income</strong> is any money you regularly earn each month. Usually it comes from your job but it can come from other sources like the government. These are positive transactions in your bank account.
-          <strong>Expenses</strong> are money you spend each month. This includes paying for your rent or mortgage, utilities, groceries, gas, subscriptions, and entertainment. These are negative transactions in your bank account.
-          <strong>Cash Flow</strong> is income minus expenses. This is how much money you're actually making each month. Watch out for negative cash flow! This means you're spending more money than you have.
-        </p>
-        <h4>Upload a CSV with transactions to see how much you make each month</h4>
-        <p>Use the following format: Date, Description, Amount
-          <br>
-          Example: 2021-12-31, New Year's Present, 200.00
-        </p>
-        <input type="file" accept=".csv, text/csv" name="file" id="csvFile"/>
-        <button type="submit" class="btn btn-primary btn-lg">Generate Chart!</button>
-      </form>
+      <p>Translate page to:</p>
+      <select id="language">
+        <option value="en">English</option>
+        <option value="zh">Chinese</option>
+        <option value="es">Spanish</option>
+        <option value="hi">Hindi</option>
+        <option value="ar">Arabic</option>
+      </select>
+      <input type="submit" onclick="translatePage()">
+      <br>
+      <br>
+      <div id="translate">
+        <form action="/process-income-expense" method="POST" enctype="multipart/form-data">
+          <p>
+            When setting a budget, it's important to know how much money you actually make. 
+            <strong>Income</strong> is any money you regularly earn each month. Usually it comes from your job but it can come from other sources like the government. These are positive transactions in your bank account.
+            <strong>Expenses</strong> are money you spend each month. This includes paying for your rent or mortgage, utilities, groceries, gas, subscriptions, and entertainment. These are negative transactions in your bank account.
+            <strong>Cash Flow</strong> is income minus expenses. This is how much money you're actually making each month. Watch out for negative cash flow! This means you're spending more money than you have.
+          </p>
+          <h4>Upload a CSV with transactions to see how much you make each month</h4>
+          <p>Use the following format: Date, Description, Amount
+            <br>
+            Example: "2021-12-31", "New Year's Present", "200.00"
+          </p>
+          <input type="file" accept=".csv, text/csv" name="file" id="csvFile"/>
+          <button type="submit" class="btn btn-primary btn-lg">Generate Chart!</button>
+        </form>
+      </div>
       <br>
       <div id="income-expense-chart"></div>
     </div>
