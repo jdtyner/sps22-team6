@@ -16,3 +16,43 @@ footer {
   position: fixed;
   bottom: 20px;
 }
+
+#hero-container {
+    height: 100vh;
+    width: 100%;
+    color: white;
+    background-image: 
+      linear-gradient(
+        rgba(0,0,0,.8), rgba(0,0,0,.5)),
+      url("images/budgeting-2.png");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    
+}
+
+#intro {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 200px;
+    margin-top: -150px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    font-size: 300%;
+    margin-left:20px;
+}
+
+#description {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 200px;
+    margin-top: -60px;
+    position: absolute;
+    text-align: center;
+    font-size: 150%;
+    top: 50%;
+    margin-left: 70px;
+}
+
+#credit {
+    margin-top: -200px;
+}
