@@ -12,8 +12,8 @@ function drawRentBuyChart()
         'width':800,
         'height':500,
       };
-    var chart = new google.charts.Line(document.getElementById('rentBuyChart'));
-    chart.draw(data, google.charts.Line.convertOptions(options));
+    var chart = new google.visualization.LineChart(document.getElementById('rentBuyChart'));
+    chart.draw(data, options);
 }
 
 function populateChartData()
