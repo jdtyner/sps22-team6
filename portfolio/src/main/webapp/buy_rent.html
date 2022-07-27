@@ -5,6 +5,7 @@
     <title>Buy vs Rent Calculator</title>
     <link rel="stylesheet" href="style.css">
     <script src="buy_rent_logic.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
   <body>
     <div id="content">
@@ -22,10 +23,11 @@
       <input type="number" id="time" name="time" min = "1">
       <br/>
       <br/>
-      <button id="calcButton" onclick="calcBuyRent()">Calculate</button>
+      <button id="calcButton" onclick="calcBuyRent()" onclick="drawRentBuyChart()">Calculate</button>
       <br/>
       <h3 id="calcResult"></h3>
       <h4 id="calcAdvice"></h4>
+      <div id="rentBuyChart"></div>
     </div>
   </body>
 </html>
