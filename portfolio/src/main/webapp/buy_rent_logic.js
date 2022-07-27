@@ -4,6 +4,7 @@ google.charts.setOnLoadCallback(drawRentBuyChart);
 function drawRentBuyChart()
 {
     var data_array = populateChartData();
+    console.log(data_array)
     var data = google.visualization.arrayToDataTable(data_array);
     var options = {
         title: 'Rent vs Buy Break-even Chart',
@@ -28,7 +29,7 @@ function populateChartData()
     populated_data.push(chartElements);
 
     //add starting values to chart data
-    const starting_values = [1, home_price, rent_price];
+    const starting_values = [1, parseInt(home_price), parseInt(rent_price)];
     populated_data.push(starting_values);
 
 
@@ -42,13 +43,11 @@ function populateChartData()
     {
         total_rent = total_rent + year_rent;
         breakeven_year = breakeven_year + 1;
-        const new_data = [breakeven_year, home_price, total_rent];
+        const new_data = [breakeven_year, parseInt(home_price), total_rent];
         populated_data.push(new_data);
     }
     return populated_data;
 }
-
-
 
 function calcBuyRent()
 {
